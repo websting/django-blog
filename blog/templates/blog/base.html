@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--w3-schools-->
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!--CSS styles-->
+        <link href="{% static 'css/blog.css' %}" rel="stylesheet">
+        <link href="{% static 'css/main.css' %}" rel="stylesheet">
+        <!--Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <!--font awesome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!--Google fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    </head>
+    
+    <body class="w3-light-grey">
+        <!--drop down header-->
+        <header>
+            <div class="collapse bg-dark" id="navbarHeader">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">About</h4>
+                    <p class="text-muted">Hi, I'm Antonio and this is myBlog.  A place where you will find links to free tutorials for learning to code.  In addition you can read my articles where I brag about Web development.  I hope you enjoy browsing around, and don't forget to leave a comment - just be nice!</p>
+                  </div>
+                  <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">Contact</h4>
+                    <ul class="list-unstyled">
+                      <li><a href="https://www.instagram.com/" class="text-white" target="_blank">Follow on Instagram</a></li>
+                      <li><a href="https://www.facebook.com/WebCreations-101387478992862" class="text-white" target="_blank">Like on Facebook</a></li>
+                      <li><a href="mailto:anttonio.herrera@gmail.com" class="text-white">Email me</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--Home page link-->
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+              <div class="container">
+                <a href="{% url 'blog:post_list' %}" class="navbar-brand d-flex align-items-center">
+                  <i class="fas fa-home"></i><strong>myBlog</strong>
+                </a>
+                <!--Burger button-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              </div>
+            </div>
+          </header>
+           <!--header ends-->
+
+        <div class="container" style="max-width: 1000px;">
+            {% block content %}
+            <!--Main content here-->
+            {% endblock %} 
+        </div> 
+
+        <!-- Footer -->
+        <div class="container-fluid bg-dark w3-text-white">
+          <footer class="w3-container w3-padding-32 w3-margin-top w3-center">
+            <a style="text-decoration:none" href="{% url 'blog:post_list' %}">
+            <button class="w3-button w3-padding-large w3-margin-bottom w3-left w3-text-white">&laquo; Previous</button></a>
+            <button class="w3-button w3-black w3-disabled w3-padding-large w3-margin-bottom w3-right">Next &raquo;</button>
+            <p>Powered by <a class="w3-text-green" href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+            <p>Hosted by <a href="https://www.heroku.com" target="_blank"><span class="w3-blue">python</span>anywhere</a></p>
+            <p>&copy; webCreations 2021.  All rights reserved.</p>
+          </footer>
+        </div>
+        <!--Bootsstrap script & Popper-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,129 @@
+{% extends 'blog/base.html' %} # ---Inherit from blog/base.html
+
+{% block title %}myBlog{% endblock %}
+
+{% block content %}
+
+  <!-- Grid Main cont.-->
+  <div class="w3-row w3-padding-32">
+
+  <!-- Blog entries -->
+  <div class="w3-col l8 s12">
+
+    <!-- Blog entry -->
+    {% for post in posts %}
+
+      <div class="w3-card-4 w3-margin w3-white">
+        <img src="{{post.image.url}}" alt="Nature" style="width:100%">
+        <div class="w3-container">
+
+          <!--data coming from Admin-->
+          <h3><b>{{post.title}}</b></h3>
+          <h5> <span class="w3-opacity">{{post.subtitle}}</span></h5>
+        </div>
+        <div class="w3-container">
+          <p><span>{{ post.body|truncatewords:13|linebreaks }}<span</p><!--Filters to truncate words and  add HTML line breaks--->
+          <div class="w3-row">
+            <div class="w3-col m8 s12">
+              <a class="links" href="{{ post.get_absolute_url }}">
+              <p><button class="w3-button w3-padding-large w3-white w3-border"><b>READ MORE &raquo;</b></button></p></a>
+            </div>
+            <!--comments counter-->
+            <div class="w3-col m4 w3-hide-small">
+              <p><span class="w3-padding-large w3-right"><a style="text-decoration:none" href="{{ post.get_absolute_url }}"><b class="w3-text-black">Comments &nbsp;</b> <span class="w3-tag">{{ post.comments.count }}</span></span></p></p></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    <hr class="w3-light-grey">
+  <!-- END BLOG ENTRIES -->
+  </div>
+  
+  <!-- Aside Linnks -->
+  <div class="w3-col l4">
+    <!-- Card links 1 -->
+    <div class="w3-card w3-margin">
+      <div class="w3-container w3-padding w3-green">
+        <h4 class="w3-center">Frontend</h4>
+      </div>
+      <ul class="w3-ul w3-hoverable w3-white">
+        <li class="w3-padding-16">
+          <a href="https://developer.mozilla.org/en-US/docs/Learn/Front-end_web_developer" target="_blank">
+          <i class="fas fa-wifi fa-2x"></i>
+          <span class="w3-large"> Client side programing</span><br></a>
+        </li>
+        <li class="w3-padding-16">
+          <a href="https://www.learn-html.org/" target="_blank">
+          <i class="fab fa-html5 fa-2x w3-blue"></i>
+          <span class="w3-large"> HTML</span><br></a>
+        </li>
+        <li class="w3-padding-16">
+          <a href="https://www.tutorialspoint.com/css/index.htm" target="_blank">
+          <i class="fab fa-css3-alt fa-2x w3-orange"></i>
+          <span class="w3-large"> CSS</span><br></a>
+        </li>   
+        <li class="w3-padding-16">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+          <i class="fab fa-js-square fa-2x w3-yellow"></i>
+          <span class="w3-large"> JavaScript</span><br></a>
+        </li>  
+      </ul>
+    </div>
+    <hr class="w3-light-grey"> 
+    
+    <!-- Card Links 2 -->
+    <div class="w3-card w3-margin">
+      <div class="w3-container w3-padding w3-blue">
+        <h4 class="w3-center">Backend</h4>
+      </div>
+      <ul class="w3-ul w3-hoverable w3-white">
+        <li class="w3-padding-16">
+          <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side" target="_blank">
+          <i class="fas fa-server fa-2x"></i>
+          <span class="w3-large"> Server side programing</span><br></a>
+        </li>
+        <li class="w3-padding-16">
+          <a href="https://www.python.org/" target="_blank">
+          <i class="fab fa-python fa-2x w3-blue"></i>
+          <span class="w3-large"> Python</span><br></a>
+        </li>
+        <li class="w3-padding-16">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Introduction" target="_blank">
+          <i class="fab fa-js fa-2x w3-yellow"></i>
+          <span class="w3-large"> Modern JavaScript</span><br></a>
+        </li>   
+        <li class="w3-padding-16">
+          <a href="https://www.tutorialspoint.com/nodejs/index.htm" target="_blank">
+          <i class="fab fa-node fa-2x w3-green"></i>
+          <span class="w3-large"> Nodejs</span><br></a>
+        </li>  
+      </ul>
+    </div>
+    <hr class="w3-light-grey"> 
+   
+    <!-- Card links 3 -->
+    <div class="w3-card w3-margin">
+      <div class="w3-container w3-padding w3-red">
+        <h4 class="w3-center">Tools</h4>
+      </div>
+      <div class="w3-container w3-white">
+      <p><span class="w3-tag w3-black w3-margin-bottom">Vue</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">React</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Angular</span>
+        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Django</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Bootstrap</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom"></span>
+        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Materialize</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Bulma</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Font-Awesome</span>
+        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">GitHub</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">MDN</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Codepen</span>
+        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Linux</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Vscode</span>
+      </p>
+      </div>
+    </div>
+    
+  <!-- END Introduction Menu -->
+  </div>
+  
+  <!-- END GRID -->
+  </div><br>
+  
+  <!-- END w3-content -->
+  </div>
+
+{% endblock %}

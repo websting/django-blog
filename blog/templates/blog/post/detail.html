@@ -1,0 +1,62 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="w3-row"></div>
+<div class="article-detail">
+    <div class="article" style="text-align:justify; margin: 16px; padding: 23px;">
+        <!--data from admin-->
+        <h3><b>{{ post.title }}</b></h3>
+        <h5> <span class="w3-opacity">{{post.subtitle}}</span></h5>
+        <hr class="w3-red" />
+        <p><span>{{ post.body|linebreaks }}</span></p>
+
+        <!--new comment green-button-->
+        <div class="w3-container">
+            <button onclick="document.getElementById('id01').style.display='block'"
+                class="w3-button w3-teal w3-round w3-right">Comment ?</button>
+        </div>
+        <hr class="w3-red" />
+
+        <!--Comments section -->
+        <h3 class="w3-padding-16 w3-center">Read what others are saying.</h3>
+        {% for comment in comments %}
+            <div class="comment">
+                <p class="info"><strong>{{ comment.name}}</strong><span class="w3-opacity"> {{ comment.created}}
+                    </span>
+                    {{ comment.body|linebreaks }}
+                </p>
+            </div>
+            {% empty %}
+            <p>Nothing to share yet !</p>
+        {% endfor %}
+
+        {% if new_comment %}
+        <h2>Your comment has benn added.</h2>
+        {% else %}
+        <!--Green-Comment Button click event happens-->
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:500px">
+
+                <form class="w3-container" action="." method="post">
+                    <div class="w3-section w3-padding">
+                        {{ comment_form.as_p }}
+                        {% csrf_token %}
+                        <p><input class="w3-button w3-blue w3-round" type="submit" value="Submit"></p>
+                    </div>
+                </form>
+
+                <div class="w3-container w3-border-top w3-padding-16 w3-black">
+                    <button onclick="document.getElementById('id01').style.display='none'" type="button"
+                        class="w3-button w3-red w3-right w3-round">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+</div>
+</div>
+{% endblock %}
